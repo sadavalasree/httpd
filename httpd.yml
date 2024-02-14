@@ -1,10 +1,15 @@
-tasks:
- - name: install apache
-   package:
-     name: httpd
-     state: present
+---
+- hosts: web
+  name: Install the apache web service
+  become: yes
 
- - name: start httpd
-   service:
-     name: httpd
-     state: started
+  tasks:
+    - name: install apache
+      package:
+        name: httpd
+        state: present
+
+    - name: start httpd
+      service:
+        name: httpd
+        state: started
